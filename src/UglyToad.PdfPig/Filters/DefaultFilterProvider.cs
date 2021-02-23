@@ -79,6 +79,8 @@
                     return result;
                 case NameToken name:
                     return new[] { GetFilterStrict(name.Data) };
+                case IndirectReferenceToken referenceToken:
+                    return new[] { GetFilterStrict("FlateDecode") };
                 default:
                     throw new PdfDocumentFormatException($"The filter for the stream was not a valid object. Expected name or array, instead got: {token}.");
             }
